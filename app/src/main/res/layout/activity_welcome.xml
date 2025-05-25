@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="24dp"
+    android:background="#FAFAFA">
+
+    <!-- Menu Icon (Optional) -->
+
+    <!-- Welcome Text -->
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WELCOME TO"
+        android:textSize="14sp"
+        android:textColor="#666666"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="start"/>
+
+    <TextView
+        android:id="@+id/appName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DaILY Note"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        android:textColor="#000000"
+        android:layout_marginTop="4dp"
+        android:layout_gravity="start"/>
+
+    <!-- Illustration -->
+    <ImageView
+        android:id="@+id/illustrationImage"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/amico"
+        android:contentDescription="Notes Illustration"
+        android:layout_marginTop="24dp"/>
+
+    <!-- Main Text -->
+    <TextView
+        android:id="@+id/mainTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Take Notes"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_marginTop="24dp"/>
+
+    <TextView
+        android:id="@+id/mainSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quickly capture what's on your mind"
+        android:textSize="14sp"
+        android:textColor="#666666"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Buttons -->
+    <Button
+        android:id="@+id/createAccountButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:backgroundTint="#FF9800"
+        android:text="CREATE ACCOUNT"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="LOG IN"
+        android:textColor="#FF9800" />
+
+</LinearLayout>

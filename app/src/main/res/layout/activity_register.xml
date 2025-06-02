@@ -13,13 +13,12 @@
         android:gravity="start">
 
         <!-- Back Arrow -->
-        <ImageView
-            android:id="@+id/backButton"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/arrow_back_24px"
-            android:contentDescription="Back Button"
-            android:padding="3dp"/>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
 
         <!-- Title -->
         <TextView
@@ -79,7 +78,6 @@
             android:layout_height="wrap_content"
             android:hint="Password"
             android:drawableStart="@drawable/lock_24px_outlined"
-            android:drawableEnd="@drawable/visibility_off_24px_outlined"
             android:drawablePadding="12dp"
             android:padding="12dp"
             android:background="@drawable/edittext_baground"

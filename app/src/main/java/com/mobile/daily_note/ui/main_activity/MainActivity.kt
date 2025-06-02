@@ -1,14 +1,16 @@
-package com.mobile.daily_note
+package com.mobile.daily_note.ui.main_activity
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
+import com.mobile.daily_note.data.local.UserPreference
+import com.mobile.daily_note.data.local.datastore
 import com.mobile.daily_note.databinding.ActivityWelcomeBinding
+import com.mobile.daily_note.helper.ViewModelFactory
 import com.mobile.daily_note.ui.login.LoginActivity
 import com.mobile.daily_note.ui.register.RegisterActivity
+import com.mobile.daily_note.ui.register.RegisterViewModel
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityWelcomeBinding
@@ -16,6 +18,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val pref = UserPreference.getInstance(application.datastore)
+        val mainViewModel = ViewModelProvider(this, ViewModelFactory (pref))[MainViewModel::class.java]
+
         binding.createAccountButton.setOnClickListener{
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
@@ -23,6 +29,12 @@ class MainActivity : AppCompatActivity() {
         binding.loginButton.setOnClickListener{
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
+        }
+
+        mainViewModel.getSession().observe(this){ userData ->
+            if (userData.isLogin){
+                TODO()
+            }
         }
 
     }

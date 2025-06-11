@@ -12,6 +12,7 @@ import com.mobile.daily_note.data.local.UserPreference
 import com.mobile.daily_note.data.local.datastore
 import com.mobile.daily_note.databinding.ActivityLoginBinding
 import com.mobile.daily_note.helper.ViewModelFactory
+import com.mobile.daily_note.ui.home.HomeActivity
 import com.mobile.daily_note.ui.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
@@ -27,7 +28,9 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel.isSuccess.observe(this){message->
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
             if (message == "Login Success"){
-               TODO()
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+                finish()
             }
         }
         loginViewModel.isLoading.observe(this){isLoading ->

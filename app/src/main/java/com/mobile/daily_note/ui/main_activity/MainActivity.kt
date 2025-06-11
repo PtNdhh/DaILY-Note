@@ -8,6 +8,7 @@ import com.mobile.daily_note.data.local.UserPreference
 import com.mobile.daily_note.data.local.datastore
 import com.mobile.daily_note.databinding.ActivityWelcomeBinding
 import com.mobile.daily_note.helper.ViewModelFactory
+import com.mobile.daily_note.ui.home.HomeActivity
 import com.mobile.daily_note.ui.login.LoginActivity
 import com.mobile.daily_note.ui.register.RegisterActivity
 import com.mobile.daily_note.ui.register.RegisterViewModel
@@ -33,7 +34,9 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.getSession().observe(this){ userData ->
             if (userData.isLogin){
-                TODO()
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+                finish()
             }
         }
 

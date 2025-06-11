@@ -1,12 +1,23 @@
 package com.mobile.daily_note.ui.home.ui.notes
 
+import android.content.Intent
 import androidx.fragment.app.viewModels
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.mobile.daily_note.R
+import com.mobile.daily_note.data.local.UserPreference
+import com.mobile.daily_note.data.local.datastore
+import com.mobile.daily_note.databinding.FragmentNotesBinding
+import com.mobile.daily_note.helper.ViewModelFactory
+import com.mobile.daily_note.ui.login.LoginViewModel
+import com.mobile.daily_note.ui.register.RegisterActivity
+import com.mobile.daily_note.ui.tambah_note.TambahNoteActivity
 
 class NotesFragment : Fragment() {
 
@@ -14,18 +25,39 @@ class NotesFragment : Fragment() {
         fun newInstance() = NotesFragment()
     }
 
-    private val viewModel: NotesViewModel by viewModels()
+    private lateinit var viewModel: NotesViewModel
+    private lateinit var binding: FragmentNotesBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val pref = UserPreference.getInstance(requireContext().datastore)
+        viewModel = ViewModelProvider(this,ViewModelFactory (pref))[NotesViewModel::class.java]
 
-        // TODO: Use the ViewModel
+        val layoutManager = LinearLayoutManager(context)
+        binding.recyclerView.layoutManager = layoutManager
+
+        viewModel.isLoading.observe (viewLifecycleOwner){
+
+        }
+        viewModel.listNote.observe(viewLifecycleOwner){
+            val adapter = ListNotesAdapter()
+            adapter.submitList(it)
+            binding.recyclerView.adapter = adapter
+        }
+
+        binding.floatingActionButton2.setOnClickListener {
+            val intent = Intent(context, TambahNoteActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_notes, container, false)
+        binding = FragmentNotesBinding.inflate(inflater, container, false)
+        return binding.root
     }
+
+
 }

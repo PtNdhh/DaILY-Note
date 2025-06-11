@@ -3,7 +3,7 @@ package com.mobile.daily_note.data.network.retrofit.response
 
 import com.google.gson.annotations.SerializedName
 
-data class DataXXX(
+data class DataNote(
     @SerializedName("archived")
     val archived: Boolean,
     @SerializedName("body")

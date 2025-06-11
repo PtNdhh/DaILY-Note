@@ -31,14 +31,11 @@ interface ApiService {
         @Field("password") password: String
     ): Call<ResponseLogin>
 
-    @FormUrlEncoded
     @GET("notes")
     fun getNotes(
-        @Header("Authorization") token: String,
-        @Query("owner") owner: String
+        @Header("Authorization") token: String
     ): Call<ResponseGetNotes>
 
-    @FormUrlEncoded
     @GET("user/me")
     fun getUser(
         @Header("Authorization") token: String
@@ -52,14 +49,12 @@ interface ApiService {
         @Field("body") body: String
     ): Call<ResponseGetNotes>
 
-    @FormUrlEncoded
     @GET("notes/archived")
     fun getArchiveNotes(
         @Header("Authorization") token: String,
-        @Query("owner") owner: String
+
     ): Call<ResponseGetArchiveNotes>
 
-    @FormUrlEncoded
     @GET("notes/{note_id}")
     fun getNoteById(
         @Header("Authorization") token: String,

@@ -3,14 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_delete"
-        android:icon="@drawable/trash"
-        android:title="@string/delete"
-        app:showAsAction="always"/>
-    <item
         android:id="@+id/action_save"
-        android:icon="@drawable/check_circle"
+        android:icon="@drawable/outline_save_24"
         android:title="@string/save"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
 
 </menu>

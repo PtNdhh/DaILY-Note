@@ -11,7 +11,6 @@ import com.mobile.daily_note.helper.ViewModelFactory
 import com.mobile.daily_note.ui.home.HomeActivity
 import com.mobile.daily_note.ui.login.LoginActivity
 import com.mobile.daily_note.ui.register.RegisterActivity
-import com.mobile.daily_note.ui.register.RegisterViewModel
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityWelcomeBinding
@@ -19,6 +18,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
+
 
         val pref = UserPreference.getInstance(application.datastore)
         val mainViewModel = ViewModelProvider(this, ViewModelFactory (pref))[MainViewModel::class.java]

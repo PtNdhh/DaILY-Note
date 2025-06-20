@@ -1,14 +1,14 @@
 package com.mobile.daily_note.ui.home.ui.notes
 
+import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mobile.daily_note.data.network.retrofit.response.DataNote
-import com.mobile.daily_note.databinding.ActivityMainBinding
 import com.mobile.daily_note.databinding.ItemNoteBinding
+import com.mobile.daily_note.ui.detail_note.DetailActivity
 
 class ListNotesAdapter : ListAdapter<DataNote, ListNotesAdapter.MyViewHolder>(DIFF_CALLBACK){
     companion object {
@@ -28,6 +28,14 @@ class ListNotesAdapter : ListAdapter<DataNote, ListNotesAdapter.MyViewHolder>(DI
             binding.tvNoteTitle.text = note.title
             binding.tvNoteBody.text = note.body
             binding.tvNoteDate.text = note.createdAt
+            binding.cardItem.setOnClickListener {
+                val intent = Intent(it.context, DetailActivity::class.java)
+                intent.putExtra("id_note", note.id)
+                intent.putExtra("title_note", note.title)
+                intent.putExtra("body_note", note.body)
+                intent.putExtra("is_archive", note.archived)
+                it.context.startActivity(intent)
+            }
         }
     }
 

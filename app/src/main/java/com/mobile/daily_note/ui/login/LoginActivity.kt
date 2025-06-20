@@ -4,10 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.mobile.daily_note.R
 import com.mobile.daily_note.data.local.UserPreference
 import com.mobile.daily_note.data.local.datastore
 import com.mobile.daily_note.databinding.ActivityLoginBinding
@@ -21,6 +19,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
+
 
         val pref = UserPreference.getInstance(application.datastore)
         val loginViewModel = ViewModelProvider(this,ViewModelFactory (pref))[LoginViewModel::class.java]

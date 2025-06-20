@@ -1,12 +1,12 @@
 package com.mobile.daily_note.ui.home
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mobile.daily_note.R
 import com.mobile.daily_note.databinding.ActivityHomeBinding
 
@@ -19,6 +19,8 @@ class HomeActivity : AppCompatActivity() {
 
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
+
 
         val navView: BottomNavigationView = binding.navView
 
@@ -35,5 +37,10 @@ class HomeActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        val destination = intent.getIntExtra("navigate_to", -1) // Mengambil ekstra
+        if (destination != -1) {
+            navView.selectedItemId = destination // Menyetel ID item bottom nav
+        }
     }
 }

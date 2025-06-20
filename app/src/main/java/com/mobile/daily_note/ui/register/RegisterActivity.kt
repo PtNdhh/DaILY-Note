@@ -6,8 +6,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.viewModelFactory
-import com.mobile.daily_note.R
 import com.mobile.daily_note.data.local.UserPreference
 import com.mobile.daily_note.data.local.datastore
 import com.mobile.daily_note.databinding.ActivityRegisterBinding
@@ -20,6 +18,8 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
+
 
         val pref = UserPreference.getInstance(application.datastore)
         val registerViewModel = ViewModelProvider(this, ViewModelFactory (pref))[RegisterViewModel::class.java]

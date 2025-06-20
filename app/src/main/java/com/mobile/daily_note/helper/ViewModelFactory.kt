@@ -3,12 +3,13 @@ package com.mobile.daily_note.helper
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.mobile.daily_note.data.local.UserPreference
+import com.mobile.daily_note.ui.detail_note.DetailViewModel
 import com.mobile.daily_note.ui.home.ui.archive.ArchiveViewModel
 import com.mobile.daily_note.ui.home.ui.notes.NotesViewModel
 import com.mobile.daily_note.ui.login.LoginViewModel
 import com.mobile.daily_note.ui.main_activity.MainViewModel
 import com.mobile.daily_note.ui.register.RegisterViewModel
-import okhttp3.internal.http2.Settings
+import com.mobile.daily_note.ui.tambah_note.TambahNoteViewModel
 
 class ViewModelFactory(private val pref: UserPreference): ViewModelProvider.NewInstanceFactory(){
     @Suppress("UNCHECKED_CAST")
@@ -23,7 +24,11 @@ class ViewModelFactory(private val pref: UserPreference): ViewModelProvider.NewI
             return NotesViewModel(pref)as T
         }else if (modelClass.isAssignableFrom(ArchiveViewModel::class.java)){
             return ArchiveViewModel(pref)as T
+        }else if (modelClass.isAssignableFrom(TambahNoteViewModel::class.java)){
+            return TambahNoteViewModel(pref)as T
+        }else if (modelClass.isAssignableFrom(DetailViewModel::class.java)){
+            return DetailViewModel(pref)as T
         }
-        throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
+            throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }
 }

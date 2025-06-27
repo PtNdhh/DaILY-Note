@@ -4,12 +4,16 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
+import com.mobile.daily_note.data.local.UserModel
 import com.mobile.daily_note.data.local.UserPreference
 import com.mobile.daily_note.data.network.retrofit.response.ResponseArchiveNote
 import com.mobile.daily_note.data.network.retrofit.response.ResponseDeleteNote
 import com.mobile.daily_note.data.network.retrofit.response.ResponseUnarchiveNote
 import com.mobile.daily_note.data.network.retrofit.retrofit.ApiConfig
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,6 +25,9 @@ class DetailViewModel(private val pref: UserPreference) : ViewModel() {
 
     private val _isSuccess = MutableLiveData<String>()
     val isSuccess: LiveData<String> = _isSuccess
+
+    private var userModel = UserModel("", "", "", "",false, false)
+
 
     private val token = runBlocking {
         pref.getSession().first().token
@@ -110,6 +117,39 @@ class DetailViewModel(private val pref: UserPreference) : ViewModel() {
                 TODO("Not yet implemented")
             }
         })
+    }
+
+    fun getTheme (): LiveData<UserModel>{
+        return pref.getSession().asLiveData()
+    }
+
+    fun setThemeSetting(isDark: Boolean){
+        val isLogin = runBlocking {
+            pref.getSession().first().isLogin
+        }
+        val email= runBlocking {
+            pref.getSession().first().email
+        }
+        val token = runBlocking {
+            pref.getSession().first().token
+        }
+        val name = runBlocking {
+            pref.getSession().first().name
+        }
+        val uri = runBlocking {
+            pref.getSession().first().imgUri
+        }
+        userModel.email = email
+        userModel.isLogin = isLogin
+        userModel.name = name
+        userModel.token = token
+        userModel.isDark = isDark
+        userModel.imgUri = uri
+
+
+        viewModelScope.launch {
+            pref.saveSession(userModel)
+        }
     }
 
     companion object{

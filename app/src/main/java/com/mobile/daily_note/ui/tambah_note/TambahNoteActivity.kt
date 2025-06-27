@@ -7,7 +7,9 @@ import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.CompoundButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import com.mobile.daily_note.R
 import com.mobile.daily_note.data.local.UserPreference
@@ -52,6 +54,15 @@ class TambahNoteActivity : AppCompatActivity() {
 
         viewModel.isLoading.observe(this){
             binding.pbNote.visibility = if (it) View.VISIBLE else View.GONE
+        }
+
+        viewModel.getTheme().observe(this){
+            binding.swDark2.isChecked= it.isDark
+            val mode = if (it.isDark) AppCompatDelegate.MODE_NIGHT_YES  else AppCompatDelegate.MODE_NIGHT_NO
+            AppCompatDelegate.setDefaultNightMode(mode)
+        }
+        binding.swDark2.setOnCheckedChangeListener{ _: CompoundButton?, isChecked: Boolean ->
+            viewModel.setThemeSetting(isChecked)
         }
 
         binding.etTitle.addTextChangedListener(object : TextWatcher {

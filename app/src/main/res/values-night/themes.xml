@@ -1,7 +1,24 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.DaILYNote" parent="Theme.Material3.DayNight">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!--  Primary brand colors  -->
+        <item name="colorPrimary">#FFB347</item>
+        <!--  Hitam  -->
+        <item name="colorPrimaryVariant">#000000</item>
+        <!--  Lebih gelap  -->
+        <item name="colorOnPrimary">#000000</item>
+        <!--  Teks pada background hitam  -->
+        <!--  Secondary brand color  -->
+        <item name="colorSecondary">#FFB347</item>
+        <!--  Orange untuk FAB  -->
+        <item name="colorOnSecondary">#FFB347</item>
+        <!--  Background and Surface  -->
+        <item name="android:colorBackground">#000000</item>
+        <!--  Warna dasar aplikasi  -->
+        <item name="colorSurface">#000000</item>
+        <item name="colorOnSurface">#FFB347</item>
+        <!--  Tab selection and category chip background  -->
+        <item name="colorAccent">#F5A623</item>
+        <!--  Customize your theme here  -->
     </style>
 </resources>

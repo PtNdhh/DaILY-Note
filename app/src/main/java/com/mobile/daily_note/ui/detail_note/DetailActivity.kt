@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.CompoundButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import com.mobile.daily_note.R
 import com.mobile.daily_note.data.local.UserPreference
@@ -12,6 +14,7 @@ import com.mobile.daily_note.data.local.datastore
 import com.mobile.daily_note.databinding.AddNoteAlternateBinding
 import com.mobile.daily_note.helper.ViewModelFactory
 import com.mobile.daily_note.ui.home.HomeActivity
+import com.mobile.daily_note.ui.home.ui.profile.ProfileViewModel
 import com.mobile.daily_note.ui.tambah_note.TambahNoteViewModel
 
 class DetailActivity : AppCompatActivity() {
@@ -38,6 +41,26 @@ class DetailActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, ViewModelFactory (pref))[DetailViewModel::class.java]
         viewModelNote = ViewModelProvider(this, ViewModelFactory (pref))[TambahNoteViewModel::class.java]
 
+        viewModel.getTheme().observe(this){
+            binding.swDark2 .isChecked = it.isDark
+            val mode = if (it.isDark) AppCompatDelegate.MODE_NIGHT_YES  else AppCompatDelegate.MODE_NIGHT_NO
+            AppCompatDelegate.setDefaultNightMode(mode)
+        }
+        binding.swDark2 .setOnCheckedChangeListener{ _: CompoundButton?, isChecked: Boolean ->
+            viewModel.setThemeSetting(isChecked)
+        }
+
+
+//        experiment
+//        viewModelProfile = ViewModelProvider(this, ViewModelFactory(pref))[ProfileViewModel::class.java]
+//        viewModelProfile.getTheme().observe(this){
+//            binding.swDark2.isChecked = it
+//            val mode = if (it) AppCompatDelegate.MODE_NIGHT_YES  else AppCompatDelegate.MODE_NIGHT_NO
+//            AppCompatDelegate.setDefaultNightMode(mode)
+//        }
+//        binding.swDark2.setOnCheckedChangeListener{ _: CompoundButton?, isChecked: Boolean ->
+//            viewModelProfile.setThemeSetting(isChecked)
+//        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -96,5 +119,4 @@ class DetailActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-
 }

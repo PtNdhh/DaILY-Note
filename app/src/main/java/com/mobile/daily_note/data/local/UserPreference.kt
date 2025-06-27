@@ -13,6 +13,15 @@ import kotlinx.coroutines.flow.map
 
 val Context.datastore: DataStore<Preferences> by preferencesDataStore(name = "session")
 class UserPreference private constructor(private val dataStore: DataStore<Preferences>){
+
+    private val NAME_KEY = stringPreferencesKey("name")
+    private val URI_KEY = stringPreferencesKey("uri")
+    private val EMAIL_KEY = stringPreferencesKey("email")
+    private val TOKEN_KEY = stringPreferencesKey("token")
+    private val LOGIN_KEY = booleanPreferencesKey("isLogin")
+    private val DARK_KEY = booleanPreferencesKey("isDark")
+
+
     suspend fun saveSession(user: UserModel){
         dataStore.edit {
             it[NAME_KEY] = user.name
@@ -20,6 +29,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
             it[TOKEN_KEY] = user.token
             it[LOGIN_KEY] = user.isLogin
             it[DARK_KEY] = user.isDark
+            it[URI_KEY] = user.imgUri
         }
     }
 
@@ -29,9 +39,9 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
                 it[NAME_KEY] ?: "",
                 it[EMAIL_KEY] ?: "",
                 it[TOKEN_KEY] ?: "",
+                it[URI_KEY]?:"",
                 it[LOGIN_KEY] ?: false,
                 it[DARK_KEY] ?: false
-
             )
         }
     }
@@ -45,12 +55,6 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
     companion object{
         @Volatile
         private var INSTANCE: UserPreference? = null
-
-        private val NAME_KEY = stringPreferencesKey("name")
-        private val EMAIL_KEY = stringPreferencesKey("email")
-        private val TOKEN_KEY = stringPreferencesKey("token")
-        private val LOGIN_KEY = booleanPreferencesKey("isLogin")
-        private val DARK_KEY = booleanPreferencesKey("isDark")
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPreference{
             return INSTANCE ?: synchronized(this){

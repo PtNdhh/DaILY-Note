@@ -25,7 +25,7 @@ class LoginViewModel(private val pref: UserPreference) : ViewModel(){
     private val _isSuccess = MutableLiveData<String>()
     val isSuccess: LiveData<String> = _isSuccess
 
-    private var userModel = UserModel("", "", "", false, false)
+    private var userModel = UserModel("", "", "", "",false, false)
 
     fun login(email: String, password: String){
         _isLoading.value= true

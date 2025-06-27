@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mobile.daily_note.data.network.retrofit.response.DataNote
 import com.mobile.daily_note.databinding.ItemNoteBinding
 import com.mobile.daily_note.ui.detail_note.DetailActivity
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class ListNotesAdapter : ListAdapter<DataNote, ListNotesAdapter.MyViewHolder>(DIFF_CALLBACK){
     companion object {
@@ -24,10 +26,15 @@ class ListNotesAdapter : ListAdapter<DataNote, ListNotesAdapter.MyViewHolder>(DI
     }
 
     class MyViewHolder (private val binding: ItemNoteBinding) : RecyclerView.ViewHolder(binding.root){
+        fun showFormattedDate(date: String): String {
+            val inputDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(date)
+            val outputFormat = SimpleDateFormat("EEEE, d MMMM yyyy", Locale("id", "ID"))
+            return outputFormat.format(inputDate)
+        }
         fun bind(note : DataNote) {
             binding.tvNoteTitle.text = note.title
             binding.tvNoteBody.text = note.body
-            binding.tvNoteDate.text = note.createdAt
+            binding.tvNoteDate.text = showFormattedDate(note.createdAt)
             binding.cardItem.setOnClickListener {
                 val intent = Intent(it.context, DetailActivity::class.java)
                 intent.putExtra("id_note", note.id)
@@ -48,4 +55,5 @@ class ListNotesAdapter : ListAdapter<DataNote, ListNotesAdapter.MyViewHolder>(DI
         val note = getItem(position)
         holder.bind(note)
     }
+
 }

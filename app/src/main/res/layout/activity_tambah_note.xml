@@ -29,13 +29,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
             android:ems="10"
             android:hint="Title"
             android:inputType="text|textMultiLine"
             android:textSize="32sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,6 +54,15 @@
             app:layout_constraintEnd_toEndOf="@+id/et_title"
             app:layout_constraintStart_toStartOf="@+id/et_title"
             app:layout_constraintTop_toBottomOf="@+id/et_title" />
+
+        <Switch
+            android:id="@+id/swDarkDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="35dp"
+            android:text="mode"
+            app:layout_constraintBottom_toTopOf="@+id/et_title"
+            app:layout_constraintStart_toStartOf="@+id/et_title" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

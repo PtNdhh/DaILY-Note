@@ -41,7 +41,7 @@ interface ApiService {
         @Header("Authorization") token: String
     ): Call<ResponseGetNotes>
 
-    @GET("user/me")
+    @GET("users/me")
     fun getUser(
         @Header("Authorization") token: String
     ): Call<ResponseGetUser>

@@ -15,14 +15,9 @@
         android:label="Archived Notes"
         tools:layout="@layout/fragment_archive" />
     <fragment
-        android:id="@+id/navigation_help"
-        android:name="com.mobile.daily_note.ui.home.ui.help.HelpFragment"
-        android:label="Help"
-        tools:layout="@layout/fragment_help" />
-    <fragment
         android:id="@+id/navigation_profile"
         android:name="com.mobile.daily_note.ui.home.ui.profile.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/activity_profile" />
 
 </navigation>

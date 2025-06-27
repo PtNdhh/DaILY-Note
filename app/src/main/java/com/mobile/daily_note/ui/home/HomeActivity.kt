@@ -39,7 +39,6 @@ class HomeActivity : AppCompatActivity() {
             setOf(
                 R.id.navigation_notes,
                 R.id.navigation_archive,
-                R.id.navigation_help,
                 R.id.navigation_profile
             )
         )

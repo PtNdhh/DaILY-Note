@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--  Primary Colors  -->
+    <color name="colorPrimary">#000000</color>
+    <!--  Hitam  -->
+    <color name="colorPrimaryVariant">#000000</color>
+    <!--  Warna lebih gelap dari primary  -->
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <!--  Warna teks pada colorPrimary  -->
+    <!--  Secondary Colors  -->
+    <color name="colorSecondary">#F5A623</color>
+    <!--  Oranye untuk tombol tambah (FAB)  -->
+    <color name="colorOnSecondary">#FFB347</color>
+    <!--  Teks pada tombol FAB  -->
+    <!--  Background Colors  -->
+    <color name="colorBackground">#FFFFFF</color>
+    <!--  Latar belakang utama (putih)  -->
+    <color name="colorSurface">#FFFFFF</color>
+    <!--  Latar elemen seperti kartu  -->
+    <color name="colorOnSurface">#000000</color>
+    <!--  Teks pada elemen dengan surface putih  -->
+    <!--  Accent Colors  -->
+    <color name="colorAccent">#F5A623</color>
+    <!--  Untuk highlight atau elemen sorotan  -->
+    <!--  Status Bar  -->
+    <color name="colorStatusBar">#000000</color>
+    <!--  Warna bar status  -->
+    <!--  Navigation Bar  -->
+    <color name="colorNavigationBar">#000000</color>
+    <!--  Warna navigation bar  -->
+    <color name="bottom_nav_selected_item" android:state_checked="true">#FFB347</color>
+    <color name="bottom_nav_unselected_item">#FFB347</color>
+
 </resources>

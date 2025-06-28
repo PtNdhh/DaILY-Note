@@ -61,27 +61,23 @@ class ProfileViewModel (private val pref: UserPreference) : ViewModel() {
     }
 
     fun setUriImage(uriImage: String){
-        val isLogin = runBlocking {
-            pref.getSession().first().isLogin
-        }
-        val email= runBlocking {
+        userModel.imgUri = uriImage
+
+        userModel.email = runBlocking {
             pref.getSession().first().email
         }
-        val token = runBlocking {
-            pref.getSession().first().token
+        userModel.isLogin = runBlocking {
+            pref.getSession().first().isLogin
         }
-        val isDark = runBlocking {
-            pref.getSession().first().isDark
-        }
-        val name = runBlocking {
+        userModel.name = runBlocking {
             pref.getSession().first().name
         }
-        userModel.email = email
-        userModel.isLogin = isLogin
-        userModel.name = name
-        userModel.token = token
-        userModel.isDark = isDark
-        userModel.imgUri = uriImage
+        userModel.token = runBlocking {
+            pref.getSession().first().token
+        }
+        userModel.isDark = runBlocking {
+            pref.getSession().first().isDark
+        }
 
         viewModelScope.launch {
             pref.saveSession(userModel)

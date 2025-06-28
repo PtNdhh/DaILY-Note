@@ -59,28 +59,24 @@ class TambahNoteViewModel (private val pref: UserPreference) : ViewModel(){
     }
 
     fun setThemeSetting(isDark: Boolean){
-        val isLogin = runBlocking {
-            pref.getSession().first().isLogin
-        }
-        val email= runBlocking {
+
+        userModel.isDark = isDark
+
+        userModel.email = runBlocking {
             pref.getSession().first().email
         }
-        val token = runBlocking {
-            pref.getSession().first().token
+        userModel.isLogin = runBlocking {
+            pref.getSession().first().isLogin
         }
-        val name = runBlocking {
+        userModel.name = runBlocking {
             pref.getSession().first().name
         }
-        val uri = runBlocking {
+        userModel.token = runBlocking {
+            pref.getSession().first().token
+        }
+        userModel.imgUri = runBlocking {
             pref.getSession().first().imgUri
         }
-        userModel.email = email
-        userModel.isLogin = isLogin
-        userModel.name = name
-        userModel.token = token
-        userModel.isDark = isDark
-        userModel.imgUri = uri
-
 
         viewModelScope.launch {
             pref.saveSession(userModel)

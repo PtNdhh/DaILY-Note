@@ -17,7 +17,6 @@ import retrofit2.Response
 
 class ArchiveViewModel (private val pref: UserPreference) : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading: LiveData<Boolean> =  _isLoading
 
     private val _listNote = MutableLiveData<List<DataNote>>()
     val listNote: LiveData<List<DataNote>> = _listNote
@@ -27,7 +26,7 @@ class ArchiveViewModel (private val pref: UserPreference) : ViewModel() {
     }
 
     fun setNotesList(){
-        _isLoading.value = true
+
         val token = runBlocking {
             pref.getSession().first().token
         }
@@ -38,7 +37,7 @@ class ArchiveViewModel (private val pref: UserPreference) : ViewModel() {
                 p0: Call<ResponseGetArchiveNotes?>,
                 p1: Response<ResponseGetArchiveNotes?>
             ) {
-                _isLoading.value = false
+
                 if (p1.isSuccessful){
                     _listNote.value = p1.body()?.data
                 }else{
@@ -50,7 +49,7 @@ class ArchiveViewModel (private val pref: UserPreference) : ViewModel() {
                 p0: Call<ResponseGetArchiveNotes?>,
                 p1: Throwable
             ) {
-                _isLoading.value = false
+
                 Log.e(TAG, "onfailure: ${p1.message.toString()}")
             }
 

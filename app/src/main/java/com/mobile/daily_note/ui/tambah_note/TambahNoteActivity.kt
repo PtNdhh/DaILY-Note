@@ -27,18 +27,11 @@ class TambahNoteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = AddNoteAlternateBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        supportActionBar?.hide()
+
 
         val actionBarTitle: String = ""
 //
         supportActionBar?.title = actionBarTitle
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//
-//        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
-//            override fun handleOnBackPressed() {
-////                showAlertDialog(ALERT_DIALOG_CLOSE)
-//            }
-//        })
 
 
         val pref = UserPreference.getInstance(application.datastore)
@@ -67,16 +60,13 @@ class TambahNoteActivity : AppCompatActivity() {
 
         binding.etTitle.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // Tidak perlu digunakan jika tidak dibutuhkan
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                // Saat pengguna sedang mengetik
                 supportActionBar?.title = s.toString()
             }
 
             override fun afterTextChanged(s: Editable?) {
-                // Setelah teks berubah
             }
         })
     }

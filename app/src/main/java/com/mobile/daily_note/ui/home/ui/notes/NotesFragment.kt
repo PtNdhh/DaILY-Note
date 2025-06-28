@@ -27,14 +27,11 @@ class NotesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val pref = UserPreference.getInstance(requireContext().datastore)
         viewModel = ViewModelProvider(this,ViewModelFactory (pref))[NotesViewModel::class.java]
-        viewModel.setNotesList()
+
 
         val layoutManager = LinearLayoutManager(context)
         binding.recyclerView.layoutManager = layoutManager
 
-        viewModel.isLoading.observe (viewLifecycleOwner){
-
-        }
         viewModel.listNote.observe(viewLifecycleOwner){
             val adapter = ListNotesAdapter()
             adapter.submitList(it)

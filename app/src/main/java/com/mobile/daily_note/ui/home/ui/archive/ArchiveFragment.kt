@@ -36,9 +36,6 @@ class ArchiveFragment : Fragment() {
         val layoutManager = LinearLayoutManager(context)
         binding.recyclerView.layoutManager = layoutManager
 
-        viewModel.isLoading.observe (viewLifecycleOwner){
-
-        }
         viewModel.listNote.observe(viewLifecycleOwner){
             val adapter = ListNotesAdapter()
             adapter.submitList(it)

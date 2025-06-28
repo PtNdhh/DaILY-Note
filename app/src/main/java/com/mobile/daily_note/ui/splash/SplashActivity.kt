@@ -22,7 +22,6 @@ import com.mobile.daily_note.data.local.datastore
 import com.mobile.daily_note.helper.ViewModelFactory
 import com.mobile.daily_note.ui.home.HomeActivity
 import com.mobile.daily_note.ui.login.LoginActivity
-import com.mobile.daily_note.ui.main_activity.MainViewModel
 import com.mobile.daily_note.ui.welcomePage.WelcomeActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

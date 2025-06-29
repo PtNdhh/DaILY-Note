@@ -27,8 +27,7 @@ class RegisterActivity : AppCompatActivity() {
         registerViewModel.isSuccess.observe(this){message->
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
             if (message == "Register Success"){
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
+                moveToLogin()
             }
         }
 
@@ -57,10 +56,14 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
         binding.loginHereLink.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
+            moveToLogin()
         }
         
+    }
+
+    private fun moveToLogin(){
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
     }
     
 }

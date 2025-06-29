@@ -48,7 +48,7 @@ class SplashActivity : AppCompatActivity() {
                Intent (this, WelcomeActivity::class.java)
             }
             lifecycleScope.launch {
-                delay(2000) // Delay 2 detik (2000 ms)
+                delay(2000)
                 startActivity(intent)
                 finish()
             }

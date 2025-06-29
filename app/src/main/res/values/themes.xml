@@ -19,7 +19,8 @@
         <item name="colorOnSurface">#FFB347</item>
         <!--  Tab selection and category chip background  -->
         <item name="colorAccent">#F5A623</item>
-        <!--  Customize your theme here  -->
+
+        <item name="colorOnTertiaryContainer">#FFB347</item>
     </style>
 
     <style name="Theme.DaILYNote" parent="Base.Theme.DaILYNote" />

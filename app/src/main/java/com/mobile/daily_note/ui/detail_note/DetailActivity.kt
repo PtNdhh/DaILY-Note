@@ -116,6 +116,7 @@ class DetailActivity : AppCompatActivity() {
         }else{
             intent.putExtra("navigate_to", R.id.navigation_notes) // Kirim ID menu untuk fragment Archive
         }
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()
     }

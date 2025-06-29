@@ -2,7 +2,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
     android:padding="24dp">
 
     <LinearLayout
@@ -14,8 +13,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
         </LinearLayout>
 
@@ -33,16 +32,14 @@
             android:layout_marginTop="24dp"
             android:text="Welcome back !"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="Please login with your credentials"
-            android:textSize="16sp"
-            android:textColor="#444444" />
+            android:textSize="16sp" />
 
         <!-- Email -->
         <EditText
@@ -50,12 +47,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:hint="Email Address"
-            android:inputType="textEmailAddress"
+            android:background="@drawable/edittext_baground"
             android:drawableStart="@drawable/email_24px_outlined"
             android:drawablePadding="12dp"
-            android:padding="12dp"
-            android:background="@drawable/edittext_baground" />
+            android:hint="Email Address"
+            android:inputType="textEmailAddress"
+            android:padding="12dp" />
 
         <!-- Password -->
         <EditText
@@ -83,7 +80,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Don’t have an account yet ?"
-                android:textColor="#000000"
                 android:textSize="14sp" />
 
             <TextView
